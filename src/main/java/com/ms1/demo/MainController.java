@@ -94,13 +94,14 @@ public class MainController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         var ordinalStatus = shipment.getStatus().ordinal();
-        if(ordinalStatus < ShippingStatusEnum.values().length){
+        if(ordinalStatus < ShippingStatusEnum.values().length - 1){
             ordinalStatus++;
         }
-        else if(ordinalStatus == ShippingStatusEnum.values().length){
+        ShippingStatusEnum status = ShippingStatusEnum.values()[ordinalStatus];
+        if (status.equals(ShippingStatusEnum.DELIVERED)){
             shipment.getOrder().setOrderStatus(OrderStatusEnum.DELIVERED);
         }
-        shipment.setStatus(ShippingStatusEnum.values()[ordinalStatus]);
+        shipment.setStatus(status);
         return new ResponseEntity<>(shipment, HttpStatus.OK);
     }
 
