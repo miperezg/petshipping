@@ -80,6 +80,7 @@ public class MainController {
         shipment.setAddress(order.getCustomer().getAddresses().get(0));
         order.setOrderStatus(OrderStatusEnum.SHIPPED);
         shipment.setOrder(order);
+        shipments.add(shipment);
         return new ResponseEntity<Shipment>(shipment, HttpStatus.OK);
     }
 
@@ -100,7 +101,6 @@ public class MainController {
             shipment.getOrder().setOrderStatus(OrderStatusEnum.DELIVERED);
         }
         shipment.setStatus(ShippingStatusEnum.values()[ordinalStatus]);
-        shipments.add(shipment);
         return new ResponseEntity<>(shipment, HttpStatus.OK);
     }
 
