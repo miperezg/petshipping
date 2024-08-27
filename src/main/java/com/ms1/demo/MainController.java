@@ -67,7 +67,7 @@ public class MainController {
         return new ResponseEntity<>(shipments, HttpStatus.OK);
     }
 
-    @GetMapping("/shipments/order/{orderId}")
+    @PostMapping("/shipments/order/{orderId}")
     public ResponseEntity<Shipment> createShipment(@PathVariable("orderId") String orderId){
         if(Objects.isNull(orderId) || orderId.length() < 1){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -84,7 +84,7 @@ public class MainController {
         return new ResponseEntity<Shipment>(shipment, HttpStatus.OK);
     }
 
-    @GetMapping("/shipments/moveStatus/{shipmentId}")
+    @PostMapping("/shipments/moveStatus/{shipmentId}")
     public ResponseEntity<Shipment> moveStatus(@PathVariable("shipmentId") String shipmentId){
         if(Objects.isNull(shipmentId) || shipmentId.length() < 1){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
