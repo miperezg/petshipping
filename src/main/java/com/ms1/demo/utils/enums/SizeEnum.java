@@ -1,4 +1,4 @@
-package com.ms1.demo;
+package com.ms1.demo.utils.enums;
 
 public enum SizeEnum {
     XXS,
